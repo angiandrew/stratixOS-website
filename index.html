@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StratixOS - AI Agency for Intelligent Automation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">StratixOS</span>
+                <span class="logo-accent">AI</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#solutions" class="nav-link">Solutions</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-cta">
+                <button class="btn-primary" onclick="scrollToContact()">Get Started</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-line">Never Miss a Lead Again</span>
+                    <span class="title-line">AI Agents That Work 24/7</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Our AI receptionist answers calls when you can't, and our appointment booker captures leads on your website. 
+                    Increase your lead conversion by 391% with our proven AI agents.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn-primary btn-large" onclick="scrollToContact()">Start Your AI Journey</button>
+                    <button class="btn-secondary btn-large" onclick="scrollToContact()">Watch Demo</button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">391%</span>
+                        <span class="stat-label">Lead Conversion Increase</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">AI Receptionist</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Missed Calls</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="ai-dashboard">
+                    <div class="dashboard-header">
+                        <div class="dashboard-title">StratixOS AI Command Center</div>
+                        <div class="status-indicator">
+                            <span class="status-dot"></span>
+                            <span>All Systems Operational</span>
+                        </div>
+                    </div>
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card">
+                            <div class="card-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Inbound Agent</h3>
+                                <p>2 Active</p>
+                            </div>
+                        </div>
+                        <div class="dashboard-card">
+                            <div class="card-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Appointments</h3>
+                                <p>15 Booked Today</p>
+                            </div>
+                        </div>
+                        <div class="dashboard-card">
+                            <div class="card-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Lead Capture</h3>
+                                <p>391% Increase</p>
+                            </div>
+                        </div>
+                        <div class="dashboard-card">
+                            <div class="card-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Uptime</h3>
+                                <p>24/7 Active</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our AI Agents</h2>
+                <p class="section-subtitle">
+                    Two powerful AI agents designed to capture every lead and never let opportunities slip away
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>AI Inbound Receptionist</h3>
+                    <p>Never miss a call again. Our AI receptionist answers your phone 24/7, even when you're busy, on lunch, or closed. It's your second layer of defense against missed leads.</p>
+                    <ul class="service-features">
+                        <li>Answers calls when you can't</li>
+                        <li>Captures lead information</li>
+                        <li>Works 24/7 including holidays</li>
+                        <li>Seamless handoff to humans</li>
+                        <li>391% increase in lead conversion</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>AI Appointment Booker</h3>
+                    <p>Your website's intelligent assistant that answers FAQs and books appointments automatically. Turn website visitors into scheduled meetings without any human intervention.</p>
+                    <ul class="service-features">
+                        <li>Answers common questions</li>
+                        <li>Books appointments instantly</li>
+                        <li>Integrates with your calendar</li>
+                        <li>Captures lead details</li>
+                        <li>Works on any website</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator Section -->
+    <section class="roi-calculator">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Calculate Your Lost Revenue</h2>
+                <p class="section-subtitle">
+                    See how much money you're losing to missed calls and voicemails
+                </p>
+            </div>
+            <div class="calculator-wrapper">
+                <div class="calculator-container">
+                    <!-- Question 1: Calls per month -->
+                    <div class="question-card active" id="q1">
+                        <h3>How many calls per month?</h3>
+                        <input type="number" id="calls-per-month" placeholder="400" min="1" max="10000" autofocus>
+                        <button class="btn-primary" onclick="nextQuestion()">Next</button>
+                    </div>
+
+                    <!-- Question 2: Missed percentage -->
+                    <div class="question-card" id="q2">
+                        <h3>What % get missed / go to voicemail?</h3>
+                        <div class="slider-container">
+                            <input type="range" id="missed-percentage" min="0" max="50" value="20">
+                            <div class="percentage-display">20%</div>
+                        </div>
+                        <div class="question-actions">
+                            <button class="btn-secondary" onclick="prevQuestion()">Back</button>
+                            <button class="btn-primary" onclick="nextQuestion()">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- Question 3: Lead value -->
+                    <div class="question-card" id="q3">
+                        <h3>Value per lead?</h3>
+                        <div class="currency-input">
+                            <span>$</span>
+                            <input type="number" id="lead-value" placeholder="50" min="1" max="10000">
+                        </div>
+                        <div class="question-actions">
+                            <button class="btn-secondary" onclick="prevQuestion()">Back</button>
+                            <button class="btn-primary" onclick="showResults()">Calculate</button>
+                        </div>
+                    </div>
+
+                    <!-- Results -->
+                    <div class="question-card" id="results">
+                        <h3>You're losing</h3>
+                        <div class="result-display">
+                            <div class="main-result" id="lost-revenue">$4,000</div>
+                            <div class="result-subtitle">per month to missed calls</div>
+                        </div>
+                        <div class="savings-message" id="savings-message" style="display: none;">
+                            <div class="savings-text">You could save</div>
+                            <div class="savings-amount" id="savings-amount">$4,000</div>
+                            <div class="savings-text">per month with an AI receptionist</div>
+                        </div>
+                        <div class="result-actions">
+                            <button class="btn-primary btn-large" onclick="scrollToContact()">Get Your AI Receptionist</button>
+                            <div class="secondary-buttons">
+                                <button class="btn-secondary" onclick="prevQuestion()">Back</button>
+                                <button class="btn-secondary" onclick="recalculate()">Recalculate</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="solutions">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">
+                    Simple setup, powerful results. Get your AI agents running in minutes, not months.
+                </p>
+            </div>
+            <div class="solutions-tabs">
+                <button class="tab-btn active" data-tab="phone">Phone Agent</button>
+                <button class="tab-btn" data-tab="website">Website Agent</button>
+            </div>
+            <div class="tab-content">
+                <div class="tab-panel active" id="phone">
+                    <div class="solution-content">
+                        <div class="solution-text">
+                            <h3>AI Inbound Receptionist</h3>
+                            <p>Your AI receptionist never takes a break. It answers every call professionally, captures lead information, and ensures no opportunity is missed.</p>
+                            <ul class="solution-features">
+                                <li>Answers calls 24/7 including holidays</li>
+                                <li>Captures name, phone, email, and reason for calling</li>
+                                <li>Transfers urgent calls to you immediately</li>
+                                <li>Sends detailed lead summaries via text/email</li>
+                                <li>Increases lead conversion by 391%</li>
+                            </ul>
+                            <button class="btn-primary" onclick="scrollToContact()">Get Started</button>
+                        </div>
+                        <div class="solution-visual">
+                            <div class="visual-card">
+                                <div class="visual-header">Live Call Dashboard</div>
+                                <div class="visual-content">
+                                    <div class="call-status">
+                                        <div class="call-icon">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                        <div class="call-info">
+                                            <h4>Call in Progress</h4>
+                                            <p>AI Agent: "How can I help you today?"</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-panel" id="website">
+                    <div class="solution-content">
+                        <div class="solution-text">
+                            <h3>AI Appointment Booker</h3>
+                            <p>Turn website visitors into booked appointments automatically. Our chatbot answers questions and schedules meetings without any human intervention.</p>
+                            <ul class="solution-features">
+                                <li>Answers frequently asked questions</li>
+                                <li>Books appointments in your calendar</li>
+                                <li>Captures visitor contact information</li>
+                                <li>Works on any website platform</li>
+                                <li>Integrates with your existing tools</li>
+                            </ul>
+                            <button class="btn-primary" onclick="scrollToContact()">Get Started</button>
+                        </div>
+                        <div class="solution-visual">
+                            <div class="visual-card">
+                                <div class="visual-header">Website Chat Widget</div>
+                                <div class="visual-content">
+                                    <div class="chat-message">
+                                        <div class="message-bubble">
+                                            <p>"Hi! I can help you book an appointment. What service are you interested in?"</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Why Choose StratixOS?</h2>
+                    <p>We specialize in one thing: making sure you never miss a lead again. Our AI agents are your second layer of defense, working 24/7 to capture every opportunity.</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-phone-slash"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Zero Missed Calls</h4>
+                                <p>Never lose a lead to voicemail again. Our AI answers every call, even when you're unavailable.</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>391% More Leads</h4>
+                                <p>Capturing leads before they go to voicemail increases your conversion rate by 391%.</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>24/7 Availability</h4>
+                                <p>Your AI agents work around the clock, including weekends and holidays.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="tech-stack">
+                        <div class="tech-item">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-brain"></i>
+                            <span>TensorFlow</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-cloud"></i>
+                            <span>AWS</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-database"></i>
+                            <span>PostgreSQL</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-docker"></i>
+                            <span>Docker</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-code"></i>
+                            <span>REST APIs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Ready to Transform Your Business?</h2>
+                    <p>Let's discuss how StratixOS can accelerate your AI journey and drive measurable results.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>hello@stratixos.ai</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>San Francisco, CA</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Company Name">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Tell us about your AI needs" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary btn-full">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-text">StratixOS</span>
+                        <span class="logo-accent">AI</span>
+                    </div>
+                    <p>Intelligent AI systems for modern business.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <a href="#">Conversational AI</a>
+                        <a href="#">Automation</a>
+                        <a href="#">Analytics</a>
+                        <a href="#">Integration</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#">About</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Contact</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="#">Documentation</a>
+                        <a href="#">API Reference</a>
+                        <a href="#">Support</a>
+                        <a href="#">Community</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 StratixOS. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
