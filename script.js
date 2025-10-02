@@ -1,5 +1,27 @@
+// Prevent browser scroll restoration
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+// Force page to start at the top immediately - run before DOM is ready
+window.scrollTo(0, 0);
+document.documentElement.scrollTop = 0;
+document.body.scrollTop = 0;
+
+// Additional scroll prevention that runs immediately
+(function() {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+})();
+
 // Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function() {
+    // Force page to start at the top immediately
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
@@ -383,6 +405,18 @@ function restartCalculator() {
 
 // Initialize calculator
 document.addEventListener('DOMContentLoaded', function() {
+    // Force page to start at the top - multiple attempts to ensure it works
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    
+    // Ensure only the first question is active on page load
+    document.querySelectorAll('.question-card').forEach(card => {
+        card.classList.remove('active', 'prev');
+    });
+    document.getElementById('q1').classList.add('active');
+    currentQuestion = 1;
+    
     // Set up percentage slider
     const percentageSlider = document.getElementById('missed-percentage');
     const percentageDisplay = document.querySelector('.percentage-display');
@@ -414,6 +448,42 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+});
+
+// Additional scroll prevention on window load
+window.addEventListener('load', function() {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+});
+
+// Additional scroll prevention on window focus
+window.addEventListener('focus', function() {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+});
+
+// Additional scroll prevention on window resize
+window.addEventListener('resize', function() {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+});
+
+// Prevent any automatic scrolling on page load only
+let pageLoaded = false;
+window.addEventListener('scroll', function() {
+    if (!pageLoaded && window.scrollY > 0) {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+    }
+});
+
+// Allow scrolling after page is fully loaded
+window.addEventListener('load', function() {
+    pageLoaded = true;
 });
 
 // Utility functions
