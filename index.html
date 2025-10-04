@@ -175,10 +175,19 @@
             </div>
             <div class="calculator-wrapper">
                 <div class="calculator-container">
+                    <!-- Start Calculator Button -->
+                    <div class="question-card start-calculator" id="start-calc">
+                        <h3>Ready to Calculate Your Lost Revenue?</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 30px; font-size: 1.1rem;">
+                            See how much money you're losing to missed calls and voicemails
+                        </p>
+                        <button class="btn-primary btn-large" onclick="startCalculator()">Start Calculator</button>
+                    </div>
+                    
                     <!-- Question 1: Calls per month -->
                     <div class="question-card" id="q1">
                         <h3>How many calls per month?</h3>
-                        <input type="number" id="calls-per-month" placeholder="400" min="1" max="10000" autofocus>
+                        <input type="number" id="calls-per-month" placeholder="400" min="1" max="10000">
                         <button class="btn-primary" onclick="nextQuestion()">Next</button>
                     </div>
 

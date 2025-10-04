@@ -3,24 +3,8 @@ if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
 }
 
-// Force page to start at the top immediately - run before DOM is ready
-window.scrollTo(0, 0);
-document.documentElement.scrollTop = 0;
-document.body.scrollTop = 0;
-
-// Additional scroll prevention that runs immediately
-(function() {
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-})();
-
 // Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function() {
-    // Force page to start at the top immediately
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
     
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
@@ -267,7 +251,17 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Simple ROI Calculator
-let currentQuestion = 1;
+let currentQuestion = 0;
+
+function startCalculator() {
+    // Hide the start button and show the first question
+    document.getElementById('start-calc').classList.remove('active');
+    document.getElementById('start-calc').classList.add('prev');
+    
+    // Show the first question
+    currentQuestion = 1;
+    showQuestion(1);
+}
 
 function nextQuestion() {
     hideCurrentQuestion();
@@ -343,7 +337,7 @@ function showSavingsMessage(amount) {
 
 function recalculate() {
     hideCurrentQuestion();
-    currentQuestion = 1;
+    currentQuestion = 0;
     
     // Clear inputs
     document.getElementById('calls-per-month').value = '';
@@ -359,8 +353,8 @@ function recalculate() {
         savingsMessage.style.display = 'none';
     }
     
-    // Show first question
-    showQuestion(1);
+    // Show start button again
+    document.getElementById('start-calc').classList.add('active');
 }
 
 function animateNumber(element, start, end, duration, isCurrency = false) {
@@ -390,9 +384,9 @@ function restartCalculator() {
         card.classList.remove('active', 'prev');
     });
     
-    // Reset to first question
-    currentQuestion = 1;
-    showQuestion(1);
+    // Reset to start button
+    currentQuestion = 0;
+    document.getElementById('start-calc').classList.add('active');
     
     // Clear inputs
     document.getElementById('calls-per-month').value = '';
@@ -405,19 +399,18 @@ function restartCalculator() {
 
 // Initialize calculator
 document.addEventListener('DOMContentLoaded', function() {
-    // Force page to start at the top - multiple attempts to ensure it works
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
+    // Small delay to ensure page loads at top first
+    setTimeout(() => {
+        // Show only the start button on page load - hide all question cards
+        document.querySelectorAll('.question-card').forEach(card => {
+            card.classList.remove('active', 'prev');
+        });
+        // Show the start calculator button initially
+        document.getElementById('start-calc').classList.add('active');
+        currentQuestion = 0;
+    }, 100);
     
-    // Ensure only the first question is active on page load
-    document.querySelectorAll('.question-card').forEach(card => {
-        card.classList.remove('active', 'prev');
-    });
-    document.getElementById('q1').classList.add('active');
-    currentQuestion = 1;
-    
-    // Set up percentage slider
+    // Set up percentage slider (outside setTimeout)
     const percentageSlider = document.getElementById('missed-percentage');
     const percentageDisplay = document.querySelector('.percentage-display');
     
@@ -450,41 +443,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Additional scroll prevention on window load
-window.addEventListener('load', function() {
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-});
-
-// Additional scroll prevention on window focus
-window.addEventListener('focus', function() {
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-});
-
-// Additional scroll prevention on window resize
-window.addEventListener('resize', function() {
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-});
-
-// Prevent any automatic scrolling on page load only
-let pageLoaded = false;
-window.addEventListener('scroll', function() {
-    if (!pageLoaded && window.scrollY > 0) {
-        window.scrollTo(0, 0);
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
-    }
-});
-
-// Allow scrolling after page is fully loaded
-window.addEventListener('load', function() {
-    pageLoaded = true;
-});
 
 // Utility functions
 function isValidEmail(email) {
