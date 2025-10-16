@@ -413,12 +413,17 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form action="https://formspree.io/f/mqaywgwa" method="POST">
+                    <form action="https://formspree.io/f/mqaywgwa" method="POST" onkeydown="handleFormKeydown(event)">
+                        <input type="hidden" name="_subject" value="New Contact Form Submission">
+                        <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you">
                         <div class="form-group">
                             <input type="text" name="name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
                             <input type="email" name="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="telephone" placeholder="Phone Number">
                         </div>
                         <div class="form-group">
                             <input type="text" name="company" placeholder="Company Name">
@@ -518,6 +523,11 @@
         
         console.log('Submitting form data:', formData); // Debug log
         
+        // Log all form data for debugging
+        for (let [key, value] of formData.entries()) {
+            console.log(key, value);
+        }
+        
         // Submit to Formspree via AJAX
         fetch('https://formspree.io/f/mqaywgwa', {
             method: 'POST',
@@ -580,6 +590,17 @@
         setTimeout(() => {
             errorDiv.remove();
         }, 5000);
+    }
+
+    function handleFormKeydown(event) {
+        // If Enter key is pressed in the contact form, submit the form
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            const submitBtn = document.querySelector('.contact-form button[type="button"]');
+            if (submitBtn) {
+                submitForm({ target: submitBtn, preventDefault: () => {} });
+            }
+        }
     }
     </script>
 </body>
