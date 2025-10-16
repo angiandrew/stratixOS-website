@@ -1,3 +1,84 @@
+// Form submission with AJAX to stay on page
+function submitForm(event) {
+    console.log('submitForm called'); // Debug log
+    
+    event.preventDefault();
+    
+    const form = event.target.closest('form');
+    const formData = new FormData(form);
+    
+    // Show loading state
+    const submitBtn = event.target;
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    
+    console.log('Submitting form data:', formData); // Debug log
+    
+    // Submit to Formspree via AJAX
+    fetch('https://formspree.io/f/mqaywgwa', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        console.log('Response received:', response); // Debug log
+        if (response.ok) {
+            showSuccessMessage();
+            form.reset();
+        } else {
+            throw new Error('Form submission failed');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error); // Debug log
+        showErrorMessage();
+    })
+    .finally(() => {
+        // Reset button
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    });
+}
+
+function showSuccessMessage() {
+    const form = document.querySelector('.contact-form');
+    const successDiv = document.createElement('div');
+    successDiv.className = 'form-success';
+    successDiv.innerHTML = `
+        <div style="background: #10b981; color: white; padding: 20px; border-radius: 12px; margin-top: 20px; text-align: center;">
+            <h3>✅ Message Sent Successfully!</h3>
+            <p>Thank you for your message. We'll get back to you soon!</p>
+        </div>
+    `;
+    form.appendChild(successDiv);
+    
+    // Remove message after 5 seconds
+    setTimeout(() => {
+        successDiv.remove();
+    }, 5000);
+}
+
+function showErrorMessage() {
+    const form = document.querySelector('.contact-form');
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'form-error';
+    errorDiv.innerHTML = `
+        <div style="background: #ef4444; color: white; padding: 20px; border-radius: 12px; margin-top: 20px; text-align: center;">
+            <h3>❌ Error Sending Message</h3>
+            <p>Please try again or contact us directly.</p>
+        </div>
+    `;
+    form.appendChild(errorDiv);
+    
+    // Remove message after 5 seconds
+    setTimeout(() => {
+        errorDiv.remove();
+    }, 5000);
+}
+
 // Prevent browser scroll restoration
 if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
@@ -64,35 +145,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Form submission
-    const contactForm = document.querySelector('.contact-form form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const name = this.querySelector('input[type="text"]').value;
-            const email = this.querySelector('input[type="email"]').value;
-            const company = this.querySelector('input[placeholder="Company Name"]').value;
-            const message = this.querySelector('textarea').value;
-            
-            // Basic validation
-            if (!name || !email || !message) {
-                showNotification('Please fill in all required fields.', 'error');
-                return;
-            }
-            
-            if (!isValidEmail(email)) {
-                showNotification('Please enter a valid email address.', 'error');
-                return;
-            }
-            
-            // Simulate form submission
-            showNotification('Thank you for your message! We\'ll get back to you soon.', 'success');
-            this.reset();
-        });
-    }
 
     // Scroll animations
     const observerOptions = {

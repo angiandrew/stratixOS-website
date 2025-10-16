@@ -400,33 +400,33 @@
                     <div class="contact-details">
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <span>hello@stratixos.ai</span>
+                            <span>contact@stratixos.com</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>+1 (555) 123-4567</span>
+                            <span>772-538-5517</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>San Francisco, CA</span>
+                            <span>Miami, Florida</span>
                         </div>
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form>
+                    <form action="https://formspree.io/f/mqaywgwa" method="POST">
                         <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
+                            <input type="text" name="name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Email Address" required>
+                            <input type="email" name="email" placeholder="Email Address" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Company Name">
+                            <input type="text" name="company" placeholder="Company Name">
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Tell us about your AI needs" rows="4"></textarea>
+                            <textarea name="message" placeholder="Tell us about your AI needs" rows="4" required></textarea>
                         </div>
-                        <button type="submit" class="btn-primary btn-full">Send Message</button>
+                        <button type="button" class="btn-primary btn-full" onclick="submitForm(event)">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -500,6 +500,88 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+    // Form submission with AJAX to stay on page
+    function submitForm(event) {
+        console.log('submitForm called'); // Debug log
+        
+        event.preventDefault();
+        
+        const form = event.target.closest('form');
+        const formData = new FormData(form);
+        
+        // Show loading state
+        const submitBtn = event.target;
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        
+        console.log('Submitting form data:', formData); // Debug log
+        
+        // Submit to Formspree via AJAX
+        fetch('https://formspree.io/f/mqaywgwa', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            console.log('Response received:', response); // Debug log
+            if (response.ok) {
+                showSuccessMessage();
+                form.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error); // Debug log
+            showErrorMessage();
+        })
+        .finally(() => {
+            // Reset button
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        });
+    }
+
+    function showSuccessMessage() {
+        const form = document.querySelector('.contact-form');
+        const successDiv = document.createElement('div');
+        successDiv.className = 'form-success';
+        successDiv.innerHTML = `
+            <div style="background: #10b981; color: white; padding: 20px; border-radius: 12px; margin-top: 20px; text-align: center;">
+                <h3>✅ Message Sent Successfully!</h3>
+                <p>Thank you for your message. We'll get back to you soon!</p>
+            </div>
+        `;
+        form.appendChild(successDiv);
+        
+        // Remove message after 5 seconds
+        setTimeout(() => {
+            successDiv.remove();
+        }, 5000);
+    }
+
+    function showErrorMessage() {
+        const form = document.querySelector('.contact-form');
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'form-error';
+        errorDiv.innerHTML = `
+            <div style="background: #ef4444; color: white; padding: 20px; border-radius: 12px; margin-top: 20px; text-align: center;">
+                <h3>❌ Error Sending Message</h3>
+                <p>Please try again or contact us directly.</p>
+            </div>
+        `;
+        form.appendChild(errorDiv);
+        
+        // Remove message after 5 seconds
+        setTimeout(() => {
+            errorDiv.remove();
+        }, 5000);
+    }
+    </script>
 </body>
 </html>
 <!-- Force deployment -->
